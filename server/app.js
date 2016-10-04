@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
+app.use(bodyParser.json());
 var path = require('path');
 var port = process.env.PORT || 2727;
 var mongoose = require('mongoose');

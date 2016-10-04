@@ -14,12 +14,9 @@ google.charts.load('upcoming', {packages: ['map']});
         ['3445 5th ave s, mpls, mn', 'Home']
       ]);
 
-      var MapOptions = {
-        streetViewControl: false
-      };
       var options = {
         mapType: 'styledMap',
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        streetViewControl: false,
         zoomLevel: 10,
         showTooltip: true,
         showInfoWindow: true,

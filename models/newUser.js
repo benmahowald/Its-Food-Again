@@ -4,21 +4,26 @@ var Schema = mongoose.Schema;
 console.log('newUser Schema sourced');
 
 var businessSupply = new Schema({
-  _id: Number,
-  business_name: {type: String, required: true},
-  business_number: {type: Number, required: true},
-  business_email: {type: String, required: true},
-  business_type: {type: String, required: true}, // (option) 'bakery', 'grocery store', 'restaurant', 'other'
-  business_description: {type: String, required: true},
-  contact_name: {type: String, required: true},
-  contact_email: {type: String, required: true},
-  address: {
-    city: {type: String, required: true},
-    state: String, //(option) list of states drop down
-    street: {type: String, required: true},
-    zip: {type: Number, required: true}
+  token: String,
+  date_added: {
+    type: Date,
+    default: new Date(),
+    required: true
   },
-  admin: {type: Boolean, default: false},
+  business_name: String,
+  business_number: Number,
+  business_email: String,
+  business_type: String, // (option) 'bakery', 'grocery store', 'restaurant', 'other'
+  business_description: String,
+  contact_name: String,
+  contact_email: String,
+  address: {
+    city: String,
+    state: String, //(option) list of states drop down
+    street: String,
+    zip: Number
+  },
+  admin: Boolean,
   portions: Number,
   portion_comment: String
 });
