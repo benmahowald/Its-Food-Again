@@ -5,9 +5,18 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 var path = require('path');
 var port = process.env.PORT || 2727;
+var mongoose = require('mongoose');
 
 // static folder
 app.use(express.static('public'));
+
+//link server side router
+var foodAgainRouter = require('../router/foodAgainRouter.js');
+app.use(foodAgainRouter);
+
+// link server to DB
+var mongoURI = 'mongodb://localhost:27017/foodAgain';
+var MongoDB = mongoose.connect(mongoURI).connection;
 
 // spin up server
 app.listen(port, function() {

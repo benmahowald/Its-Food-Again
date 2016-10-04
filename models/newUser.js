@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var newBusiness = new Schema({
+console.log('newUser Schema sourced');
+
+var businessSupply = new Schema({
   _id: Number,
   business_name: {type: String, required: true},
   business_number: {type: Number, required: true},
@@ -21,5 +23,5 @@ var newBusiness = new Schema({
   portion_comment: String
 });
 
-var user = mongoose.model('businesses', newBusiness);
-module.exports = user;
+var clients = mongoose.model('clients', businessSupply);
+module.exports = clients;

@@ -14,14 +14,19 @@ google.charts.load('upcoming', {packages: ['map']});
         ['3445 5th ave s, mpls, mn', 'Home']
       ]);
 
+      var MapOptions = {
+        streetViewControl: false
+      };
       var options = {
         mapType: 'styledMap',
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
         zoomLevel: 10,
         showTooltip: true,
         showInfoWindow: true,
-        useMapTypeControl: true,
+        tooltip: {isHtml: true},
         maps: {
           // Your custom mapTypeId holding custom map styles.
+          // MapOptions: {streetViewControl: false},
           styledMap: {
             name: 'Styled Map', // This name will be displayed in the map type control.
             styles: [
