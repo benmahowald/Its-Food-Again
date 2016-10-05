@@ -2,14 +2,26 @@ console.log('sourced client.js');
 
 var myApp = angular.module('myApp', ["ngRoute"]);
 
-//config routes
-// myApp.config(["$routeProvider", function($routeProvider){
-//   $routeProvider.
-//     when("/home",{
-//       templateUrl:"/views/partials/home.html",
-//       controller: "homeController"
-//     });
-// }]);
+// config routes
+myApp.config(["$routeProvider", function($routeProvider){
+  $routeProvider.
+    when("/",{
+      templateUrl:"/views/partials/index.html",
+      controller: "homeController"
+    }).
+    when("/",{
+      templateUrl:"/views/partials/createAccount.html",
+      controller: "accountController"
+    }).
+    when("/",{
+      templateUrl:"/views/partials/mapView.html",
+      controller: "mapController"
+    }).
+    when("/",{
+      templateUrl:"/views/partials/postFood.html",
+      controller: "postController"
+    });
+}]);
 
 // var lock = new Auth0Lock('HHp6IJkxeJhf5IKHQ5NUAETGyq9ggCll', 'ben-mahowald.auth0.com');
 // // log out url, from Auth0
