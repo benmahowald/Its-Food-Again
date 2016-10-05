@@ -16,14 +16,14 @@ google.charts.load('upcoming', {packages: ['map']});
 
       var options = {
         mapType: 'styledMap',
-        streetViewControl: false,
         zoomLevel: 10,
         showTooltip: true,
         showInfoWindow: true,
         tooltip: {isHtml: true},
         maps: {
-          // Your custom mapTypeId holding custom map styles.
-          // MapOptions: {streetViewControl: false},
+          MapOptions: {
+            streetViewControl: false
+          },
           styledMap: {
             name: 'Styled Map', // This name will be displayed in the map type control.
             styles: [
