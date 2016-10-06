@@ -1,9 +1,11 @@
 html, body {
-  height: 80%;
+  height: 100%;
   color: rgb(48, 47, 59);
   font-style: arial, sans-serif;
+  margin: auto auto;
+  text-align: center;
 }
-#map_div {
+/*#mapChart {
   height: 100%;
   border: 1px solid #333;
-}
+}*/

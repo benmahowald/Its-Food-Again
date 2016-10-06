@@ -7,18 +7,18 @@ myApp.config(["$routeProvider", function($routeProvider){
   $routeProvider.
     when("/create",{
       templateUrl:"/views/partials/createAccount.html",
-      // controller: "createAcctController"
+      controller: "accountController"
     }).
     when("/map",{
       templateUrl:"/views/partials/mapView.html",
-      // controller: "mapViewController"
+      controller: "mapViewController"
     }).
     when("/post",{
       templateUrl:"/views/partials/postFood.html",
       controller: "postFoodController"
     }).
     otherwise({
-      redirectTo: "/map"
+      redirectTo: "/"
     });
 }]);
 

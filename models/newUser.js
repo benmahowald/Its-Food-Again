@@ -8,17 +8,16 @@ var businessSupply = new Schema({
   bus_name: String,
   bus_phone: Number,
   bus_email: String,
-  bus_type: String, // (option) 'bakery', 'grocery store', 'restaurant', 'other'
-  bus_description: String,
+  bus_type: String,
   contact_name: String,
   contact_email: String,
   address: {
     city: String,
-    state: String, //(option) list of states drop down
+    state: String,
     street: String,
     zip: Number
   },
-  admin: Boolean
+  admin: {type: Boolean, default: false, required: true}
 });
 
 var clients = mongoose.model('clients', businessSupply);

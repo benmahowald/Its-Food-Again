@@ -8,13 +8,6 @@ var path = require('path');
 var port = process.env.PORT || 2727;
 var mongoose = require('mongoose');
 
-// static folder
-app.use(express.static('public'));
-
-//link server side router
-var foodAgainRouter = require('../router/foodAgainRouter.js');
-app.use(foodAgainRouter);
-
 // link server to DB
 var mongoURI = 'mongodb://localhost:27017/foodAgain';
 var MongoDB = mongoose.connect(mongoURI).connection;
@@ -23,6 +16,10 @@ var MongoDB = mongoose.connect(mongoURI).connection;
 app.listen(port, function() {
   console.log('listening on pi server:', port);
 });
+
+//link server side router
+var foodAgainRouter = require('../router/foodAgainRouter.js');
+app.use('/', foodAgainRouter);
 
 // base url
 app.get('/', function(req,res){

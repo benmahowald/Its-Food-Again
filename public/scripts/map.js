@@ -43,7 +43,7 @@ google.charts.load('upcoming', {packages: ['map']});
         ]}}
       };
 
-      var map = new google.visualization.Map(document.getElementById('map_div'));
+      var map = new google.visualization.Map(document.getElementById('mapChart'));
 
       map.draw(data, options);
     }
