@@ -5,21 +5,20 @@ var myApp = angular.module('myApp', ["ngRoute"]);
 // config routes
 myApp.config(["$routeProvider", function($routeProvider){
   $routeProvider.
-    when("/",{
-      templateUrl:"/views/partials/index.html",
-      controller: "homeController"
-    }).
-    when("/",{
+    when("/create",{
       templateUrl:"/views/partials/createAccount.html",
-      controller: "accountController"
+      // controller: "createAcctController"
     }).
-    when("/",{
+    when("/map",{
       templateUrl:"/views/partials/mapView.html",
-      controller: "mapController"
+      // controller: "mapViewController"
     }).
-    when("/",{
+    when("/post",{
       templateUrl:"/views/partials/postFood.html",
-      controller: "postController"
+      controller: "postFoodController"
+    }).
+    otherwise({
+      redirectTo: "/map"
     });
 }]);
 

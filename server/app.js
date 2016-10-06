@@ -21,7 +21,7 @@ var MongoDB = mongoose.connect(mongoURI).connection;
 
 // spin up server
 app.listen(port, function() {
-  console.log('lisetning on pi server:', port);
+  console.log('listening on pi server:', port);
 });
 
 // base url

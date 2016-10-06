@@ -10,14 +10,22 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="scripts/map.js" type="text/javascript"></script>
     <script src="vendors/angular.min.js" charset="utf-8"></script>
+    <script src="vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" type="text/javascript"></script>
     <link href="views/styles/canvas.css" rel="stylesheet">
+    <script href="ng-router/controllers/createAcctController.js" type="text/javascript"></script>
+    <script href="../../ng-router/controllers/homeController.js" type="text/javascript"></script>
+    <script href="../../ng-router/controllers/mapViewController.js" type="text/javascript"></script>
+    <script href="../../ng-router/controllers/postFoodController.js" type="text/javascript"></script>
   </head>
-  <body>
+  <body ng-app="myApp">
     <div class="container">
-      <h1>It's Food Again</h1>
+      <div class="row">
+        <h1>It's Food Again</h1>
+        <a href="#map" class="btn active" role="button">See Map</a>
+        <a href="#create" class="btn active" role="button">Create Account</a>
+      </div>
     </div>
-    <ng-view></ng-view>
-    <div id="map_div"></div>
+    <main ng-view></main>
   </body>
 </html>
