@@ -1,11 +1,9 @@
-var myApp = angular.module('myApp',[]);
-
 myApp.controller('accountController', ['$scope', function($scope){
   console.log('createAcctController sourced');
   $scope.submitAccount = function () {
     console.log('in submitAccount');
     var contactToSend = {
-      token: String,
+      // token: String,
       bus_name: $scope.bus_name,
       bus_phone: $scope.bus_phone,
       bus_email: $scope.email,

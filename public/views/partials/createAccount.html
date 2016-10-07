@@ -1,9 +1,10 @@
-<div class="container" ng-controller="createAcctController" ng-model>
+<div class="container">
   <h1>Create Account</h1>
   <h3>Business Info</h3>
   <form id="bus_info">
     <input ng-model="bus_name" type="text" name="bus_name" value="" placeholder="Business Name">
     <select ng-model="bus_type" class="bus_type" name="bus_type">
+      <option value="" selected>-type-</option>
       <option value="bakery">Bakery</option>
       <option value="deli">Deli</option>
       <option value="grocery_store">Grocery Store</option>
@@ -15,6 +16,7 @@
     <input ng-model="address" type="text" name="address" value="" placeholder="Street">
     <input ng-model="city" type="text" name="city" value="" placeholder="City">
     <select ng-model="state" class="state">
+      <option value="" selected>-State-</option>
     	<option value="AL">Alabama</option>
     	<option value="AK">Alaska</option>
     	<option value="AZ">Arizona</option>
@@ -67,7 +69,7 @@
     	<option value="WI">Wisconsin</option>
     	<option value="WY">Wyoming</option>
     </select>
-    <input ng-model="" type="text" name="zip" value="" placeholder="ZIP">
+    <input ng-model="zip" type="text" name="zip" value="" placeholder="ZIP">
     <h3>Contact Info</h3>
     <input ng-model="contact_name" type="text" name="contact_name" value="" placeholder="Name">
     <input ng-model="contact_email" type="text" name="contact_email" value="" placeholder="Email">
