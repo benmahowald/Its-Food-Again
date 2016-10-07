@@ -47,7 +47,7 @@ myApp.controller('mapViewController', ['$scope', '$http', function($scope, $http
           var map = new google.visualization.Map(document.getElementById('mapChart'));
 
           map.draw(data, options);
+          console.log('map drawn', map);
         } // end drawMap function
-        console.log('map drawn');
   }; // end mapInit function
 }]); // end controller
