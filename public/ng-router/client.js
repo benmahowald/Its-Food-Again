@@ -9,11 +9,7 @@ myApp.config(["$routeProvider", function($routeProvider){
       templateUrl: "/views/partials/createAccount.html",
       controller: "accountController"
     })
-    .when("/map", {
-      templateUrl: "/views/partials/mapView.html",
-      controller: "mapViewController"
-    })
-    .when("/post", {
+    .when("/postFood", {
       templateUrl: "/views/partials/postFood.html",
       controller: "postFoodController"
     })

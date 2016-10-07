@@ -1,5 +1,8 @@
 myApp.controller('accountController', ['$scope', function($scope){
   console.log('createAcctController sourced');
+  $scope.toggleMap = function() {
+    $scope.map = false;
+  };
   $scope.submitAccount = function () {
     console.log('in submitAccount');
     var contactToSend = {

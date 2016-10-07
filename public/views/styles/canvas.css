@@ -1,14 +1,41 @@
 html, body {
   height: 100%;
-  color: rgb(48, 47, 59);
+  margin: 0;
+  top: 0;
+  color: #89b6d7;
   font-style: arial, sans-serif;
-  margin: auto auto;
-  text-align: center;
+  font-weight: lighter;
+}
+h1, h2, h3, p {
+  font-weight: lighter;
+}
+.header {
+  border-bottom: 1px solid #bfbfbf;
+}
+#nav {
+}
+.navButton {
+  color: #5d86a4;
+  display: table-cell;
+  vertical-align: middle;
+  height: 50px;
+  padding: 0 20px;
+  cursor: pointer;
+  border-right: 1px solid #bfbfbf;
+}
+.logo {
+  margin-right: 35px;
+}
+a:link, a:visited {
+  text-decoration: none;
+}
+a:hover {
+  background-color: #fefaf0;
+}
+a:active {
+  /*the moment it is clicked*/
 }
 #mapChart {
-  height: 100%;
-  border: 1px solid #333;
-}
-a {
-  text-decoration: none;
+  height: 90%;
+  border-bottom: 1px solid #bfbfbf;
 }
