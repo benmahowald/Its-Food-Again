@@ -1,7 +1,9 @@
-<h1>Offer Food</h1>
-<p>*Please enter a number of estimated meal portions available.</p>
-<form id="report">
-  <input type="number" name="portions" value="" placeholder="Number of portions">
-  <textarea name="comment" rows="10" cols="50"placeholder="Provide a breif description
-  of what food you have to donate."></textarea>
-</form>
+<div class="postContainer">
+  <h2>Offer Food</h2>
+  <p>*Please enter a number of estimated meal<br>portions available.</p>
+  <form id="report">
+    <input type="text" name="portions" ng-model="portions" placeholder="Number of portions"><br>
+    <textarea ng-model="comment" rows="5" cols="50"placeholder="Provide a breif description of what food you have to offer."></textarea><br>
+    <button class="submit" ng-click="submitFood()" type="button" name="button">SUBMIT</button>
+  </form>
+</div>

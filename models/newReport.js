@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-console.log('newReport Schema sourced');
+// console.log('newReport Schema sourced');
 
 var Report = new Schema ({
   portions: Number,

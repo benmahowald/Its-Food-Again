@@ -1,4 +1,4 @@
-console.log('map sourced');
+// console.log('map sourced');
 
 google.charts.load('upcoming', {packages: ['map']});
     google.charts.setOnLoadCallback(drawMap);

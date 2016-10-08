@@ -1,6 +1,6 @@
-<div class="container">
-  <h1>Create Account</h1>
-  <h3>Business Info</h3>
+<div class="createContainer">
+  <h2>Create Business Account</h2>
+  <h4>BUSINESS INFO</h4>
   <form id="bus_info">
     <input ng-model="bus_name" type="text" name="bus_name" value="" placeholder="Business Name">
     <select ng-model="bus_type" class="bus_type" name="bus_type">
@@ -12,7 +12,6 @@
       <option value="other">Other</option>
     </select>
     <input ng-model="bus_phone" type="text" name="bus_phone" value="" placeholder="Phone #">
-    <input ng-model="bus_email" type="text" name="bus_email" value="" placeholder="Email">
     <input ng-model="address" type="text" name="address" value="" placeholder="Street">
     <input ng-model="city" type="text" name="city" value="" placeholder="City">
     <select ng-model="state" class="state">
@@ -70,9 +69,9 @@
     	<option value="WY">Wyoming</option>
     </select>
     <input ng-model="zip" type="text" name="zip" value="" placeholder="ZIP">
-    <h3>Contact Info</h3>
+    <h4>CONTACT INFO</h4>
     <input ng-model="contact_name" type="text" name="contact_name" value="" placeholder="Name">
-    <input ng-model="contact_email" type="text" name="contact_email" value="" placeholder="Email">
-    <button ng-click="submitAccount()" type="button" name="button">SUBMIT</button>
+    <input ng-model="contact_email" type="text" name="contact_email" value="" placeholder="Email"><br>
+    <button class="submit" ng-click="submitAccount()" type="button" name="button">SUBMIT</button>
   </form>
 </div>

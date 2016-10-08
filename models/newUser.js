@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-console.log('newUser Schema sourced');
+// console.log('newUser Schema sourced');
 
 var businessSupply = new Schema({
   token: String,
   bus_name: String,
-  bus_phone: Number,
+  bus_phone: String,
   bus_email: String,
   bus_type: String,
   contact_name: String,

@@ -18,15 +18,18 @@
     <script src="scripts/map.js" type="text/javascript"></script>
   </head>
   <body ng-app="myApp" ng-controller="homeController">
+    <!-- <div id="opaque"></div>       -->
+    </div>
     <div class="header">
       <div id="nav">
         <a href="#" class="navButton" ng-click="showMap()"><span class="logo">It's Food Again</span></a>
         <a href="#" class="navButton" ng-click="showMap()">Map</a>
         <a href="#create" class="navButton" ng-click="hideMap()">Create Account</a>
-        <a href="#postFood" class="navButton" ng-click="hideMap()">Supply</a>
+        <a href="#postFood" class="navButton" ng-click="hideMap()">Donate Food</a>
+        <a href="#" class="navButton" ng-click="login()">Login</a>
       </div>
     </div>
     <div ng-show="map" id="mapChart"></div>
-    <main ng-view></main>
+    <main ng-view class="view"></main>
   </body>
 </html>

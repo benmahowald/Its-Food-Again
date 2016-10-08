@@ -1,5 +1,5 @@
-myApp.controller('accountController', ['$scope', function($scope){
-  console.log('createAcctController sourced');
+myApp.controller('accountController', ['$scope', '$http', function($scope, $http){
+  // console.log('createAcctController sourced');
   $scope.toggleMap = function() {
     $scope.map = false;
   };
@@ -9,7 +9,6 @@ myApp.controller('accountController', ['$scope', function($scope){
       // token: String,
       bus_name: $scope.bus_name,
       bus_phone: $scope.bus_phone,
-      bus_email: $scope.email,
       bus_type: $scope.bus_type,
       contact_name: $scope.contact_name,
       contact_email: $scope.contact_email,
@@ -19,8 +18,16 @@ myApp.controller('accountController', ['$scope', function($scope){
         street: $scope.address,
         zip: $scope.zip
       },
-      // admin: true
     }; // end contact to send
+    $http({
+      method: 'POST',
+      url: '/client',
+      data: contactToSend
+    }).then(function (response){
+          console.log('http post /client success:', response);
+        }, function (error) {
+          console.log('error in post;', error);
+        }); // end then function
     console.log(contactToSend);
   }; // end submitAccount function
 }]); // end createAcctController

@@ -1,10 +1,10 @@
-// establish technologies
+ // establish technologies
 var express = require('express');
 var app = express();
 var router = express.Router();
 var mongoose = require('mongoose');
 
-console.log('foodAgainRouter sourced');
+// console.log('foodAgainRouter sourced');
 
 // require model in route
 var newClient = require('../models/newUser');
@@ -27,14 +27,13 @@ router.get('/client', function (req, res) {
 router.post('/client', function (req, res){
   console.log('in client post route');
   var data = req.body;
-  console.log(data);
+  console.log('data:', data);
   var sendClient = new newClient({
     token: data.token,
-    bus_name: data.business_name,
-    bus_phone: data.business_number,
-    bus_email: data.business_email,
-    bus_type: data.business_type, // (option) 'bakery', 'grocery store', 'restaurant', 'other'
-    bus_description: data.business_description,
+    bus_name: data.bus_name,
+    bus_phone: data.bus_phone,
+    bus_email: data.bus_email,
+    bus_type: data.bus_type, // (option) 'bakery', 'grocery store', 'restaurant', 'other'
     contact_name: data.contact_name,
     contact_email: data.contact_email,
     address: {
@@ -45,6 +44,7 @@ router.post('/client', function (req, res){
     },
     admin: data.admin
   });
+  console.log('sendClient:', sendClient);
   sendClient.save(function(err){
     if (err) {
       console.log(err);
@@ -60,7 +60,7 @@ router.post('/client', function (req, res){
 router.post('/client/report', function (req, res){
   console.log('in client/report post route');
   var data = req.body;
-  console.log(data);
+  console.log('data:',data);
   var sendReport = new newReport({
     portions: data.portions,
     comment: data.comment,

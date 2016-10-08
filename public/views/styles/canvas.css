@@ -2,7 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   top: 0;
-  color: #89b6d7;
+  color: #5d86a4;
   font-style: arial, sans-serif;
   font-weight: lighter;
 }
@@ -10,9 +10,10 @@ h1, h2, h3, p {
   font-weight: lighter;
 }
 .header {
+  width: 100%;
+  z-index: 5;
   border-bottom: 1px solid #bfbfbf;
-}
-#nav {
+  background-color: #fff;
 }
 .navButton {
   color: #5d86a4;
@@ -25,6 +26,7 @@ h1, h2, h3, p {
 }
 .logo {
   margin-right: 35px;
+  font-size: x-large;
 }
 a:link, a:visited {
   text-decoration: none;
@@ -36,6 +38,41 @@ a:active {
   /*the moment it is clicked*/
 }
 #mapChart {
-  height: 90%;
+  height: 91%;
   border-bottom: 1px solid #bfbfbf;
+  z-index: 1;
+}
+.createContainer, .postContainer {
+  width: 400px;
+  max-width: 95%;
+  margin: auto auto;
+}
+.report {
+
+}
+input, select, textarea {
+  width: 250px;
+  padding: 10px 10px 2px;
+  max-width: 95%;
+  color: #444;
+  border: none;
+  margin: 7px;
+  border-bottom: 1px solid #bfbfbf;
+  font-size: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+}
+.submit {
+  background: transparent;
+  border: 1px solid #bfbfbf;
+  cursor: pointer;
+  padding: 8px 25px;
+  color: #5d86a4;
+  margin: 10px 5px;
+}
+.submit:hover, submit:focus {
+  outline: none;
+  background-color: #5d86a4;
+  color: #fff;
 }
