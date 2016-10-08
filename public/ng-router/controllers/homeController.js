@@ -14,5 +14,5 @@ $scope.map = true;
     $scope.map = false;
   }; // end hideMap
 
-  
+
 }]); // end controller
