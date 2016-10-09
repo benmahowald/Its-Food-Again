@@ -7,7 +7,6 @@ var businessSupply = new Schema({
   token: String,
   bus_name: String,
   bus_phone: String,
-  bus_email: String,
   bus_type: String,
   contact_name: String,
   contact_email: String,

@@ -1,17 +1,15 @@
 myApp.controller('accountController', ['$scope', '$http', function($scope, $http){
-  // console.log('createAcctController sourced');
-  $scope.toggleMap = function() {
-    $scope.map = false;
-  };
+
+  // create account function
   $scope.submitAccount = function () {
+    var userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
     console.log('in submitAccount');
     var contactToSend = {
-      // token: String,
       bus_name: $scope.bus_name,
       bus_phone: $scope.bus_phone,
       bus_type: $scope.bus_type,
       contact_name: $scope.contact_name,
-      contact_email: $scope.contact_email,
+      contact_email: userProfile.email,
       address: {
         city: $scope.city,
         state: $scope.state, //(option) list of states drop down

@@ -19,17 +19,20 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="scripts/map.js" type="text/javascript"></script>
   </head>
-  <body ng-app="myApp" ng-init="init()" ng-controller="homeController">
+  <body ng-app="myApp" ng-controller="homeController">
     <!-- <div id="opaque"></div>       -->
     </div>
     <div class="header">
       <div id="nav">
-        <a href="#" class="navButton" ng-click="showMap()"><span class="logo">It's Food Again</span></a>
+        <a href="#" class="navButton logo" ng-click="showMap()"><span class="logo">It's Food Again</span></a>
         <a href="#" class="navButton" ng-click="showMap()">Map</a>
-        <a href="#create" class="navButton" ng-click="hideMap()">Create Account</a>
-        <a href="#postFood" class="navButton" ng-click="hideMap()">Donate Food</a>
-        <a href="#" class="navButton" ng-hide="showUser" ng-click="logIn()">Log In</a>
+        <a href="#create" class="navButton" ng-show="showUser && !match" ng-click="hideMap()">Create Account</a>
+        <a href="#postFood" class="navButton" ng-show="showUser" ng-click="hideMap()">Donate Food</a>
+        <a href="#" class="navButton" ng-hide="showUser " ng-click="logIn()">Log In</a>
         <a href="#" class="navButton" ng-show="showUser" ng-click="logOut()">Log Out</a>
+        <p class='navButton' ng-show="showUser">{{userProfile.given_name}}
+          <img class="profilePic" ng-src={{userProfile.picture}}>
+        </p>
       </div>
     </div>
     <div ng-show="map" id="mapChart"></div>

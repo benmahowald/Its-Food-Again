@@ -1,40 +1,29 @@
+// declare user roles
+var guest = 1;
+var user = 2;
+var admin = 3;
+
 var lock = new Auth0Lock('HHp6IJkxeJhf5IKHQ5NUAETGyq9ggCll', 'ben-mahowald.auth0.com');
 // log out url, from Auth0
 var logOutUrl = 'https://ben-mahowald.auth0.com/v2/logout';
 
 myApp.controller('homeController', ['$scope', '$http', function($scope, $http){
-console.log('in home controller');
-$scope.map = true;
+  // console.log('in home controller');
+
+  // initialize map to show on load
+  $scope.map = true;
+
+  // button click events to show and hide map
   $scope.showMap = function (){
     $scope.map = true;
-    // console.log($scope.map);
   }; // end showMap
   $scope.hideMap = function (){
     $scope.map = false;
   }; // end hideMap
 
-  $scope.init = function(){
-    console.log( 'in init' );
-    // check if a user's info is saved in localStorage
-    if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
-      // if so, save userProfile as $scope.userProfile
-      $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
-      console.log( 'loggedIn:', $scope.userProfile );
-      $scope.showUser = true;
-    }
-    else{
-      // if not, make sure we are logged out and empty
-      emptyLocalStorage();
-      $scope.showUser = false;
-    }
-  }; // end init function
-
-  // run init on controller load
-  $scope.init();
-
   $scope.logIn = function(){
     // call out logIn function from auth0.js
-    console.log( 'in logIn' );
+    // console.log( 'in logIn' );
     lock.show( function( err, profile, token ) {
       if (err) {
         console.error( "auth error: ", err);
@@ -44,8 +33,8 @@ $scope.map = true;
         localStorage.setItem( 'userToken', token );
         // save user profile to localStorage
         localStorage.setItem( 'userProfile', JSON.stringify( profile ) );
-        // reload page because dirtyhaxorz
-        location.reload();
+        // re-initialize to set dom view according to user
+        $scope.init();
       } // end no error
     }); //end lock.show
   }; // end scope.logIn
@@ -59,13 +48,57 @@ $scope.map = true;
       // if logged out OK
       if( data.data == 'OK' ){
         // empty localStorage
-        confirm('Are you sure you want to log out?');
         emptyLocalStorage();
         $scope.showUser = false;
-        console.log($scope.showUser);
+        $scope.match = false;
       } // end if
     }); // end then
   }; // end scope.logOut
+
+  // uniquely identify user by emal
+  var checkUser = function(profile){
+    // console.log('in checkUser');
+    // get call to retrive clients from DB
+    $http({
+      method: 'GET',
+      url: '/client',
+    }).then(function(response) {
+        $scope.clients = response.data;
+
+        // iterate over client emails and match with current user
+        for (var i = 0; i < $scope.clients.length; i++) {
+          if(profile === $scope.clients[i].contact_email){
+            console.log("there's a match in the database");
+            $scope.match = true;
+        }else{
+            $scope.match = false;
+        } // end else
+        } // end for loop
+    }, function(err) {
+      console.log('error in retrieving clients:', err);
+    }); // end then function
+}; // end checkUser Function
+
+$scope.init = function(){
+  console.log( 'in init' );
+  // check if a user's info is saved in localStorage
+  if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
+    // if so, save userProfile as $scope.userProfile
+    $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
+    console.log( 'loggedIn:', $scope.userProfile);
+    $scope.showUser = true;
+    checkUser($scope.userProfile.email);
+  }
+  else{
+    // if not, make sure we are logged out and empty
+    emptyLocalStorage();
+    $scope.showUser = false;
+  }
+}; // end init function
+
+// run init on controller load
+$scope.init();
+
 }]); // end authController
 
 var emptyLocalStorage = function(){
