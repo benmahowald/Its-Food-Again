@@ -69,7 +69,13 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http){
         for (var i = 0; i < $scope.clients.length; i++) {
           if(profile === $scope.clients[i].contact_email){
             console.log("there's a match in the database");
+            // set match to manipulate DOM
             $scope.match = true;
+            // grab business name and ID to use in postFoodController
+            // to associate a donation with a specific bussiness account
+            $scope.bus_name = $scope.clients[i].bus_name;
+            $scope.bus_id = $scope.clients[i]._id;
+            console.log($scope.bus_name + ' ' + $scope.bus_id);
         }else{
             $scope.match = false;
         } // end else

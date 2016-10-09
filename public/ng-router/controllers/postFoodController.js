@@ -24,5 +24,5 @@ myApp.controller('postFoodController', ['$scope', '$http', function($scope, $htt
   var clearFields = function() {
     $scope.portions = '';
     $scope.comment = '';
-  };
+  }; // end clearFields
 }]); // end controller
