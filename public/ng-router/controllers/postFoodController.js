@@ -20,9 +20,10 @@ myApp.controller('postFoodController', ['$scope', '$http', function($scope, $htt
         }); // end then function
     console.log(foodToSend);
     clearFields();
-  }; // end submitAccount function
+  }; // end submitFood function
   var clearFields = function() {
     $scope.portions = '';
     $scope.comment = '';
+    google.charts.load("upcoming", {packages: ["map"]});
   }; // end clearFields
 }]); // end controller

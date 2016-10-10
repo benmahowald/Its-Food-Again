@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 var newClient = require('../models/newUser');
 var newReport = require('../models/newReport');
 
+// route to retrieve all clients
 router.get('/client', function (req, res) {
   console.log('in client get route');
   newClient.find({}, function (err, clients) {
@@ -17,10 +18,24 @@ router.get('/client', function (req, res) {
       console.log(err);
       res.sendStatus(500);
     } else {
-      console.log('find foodAvailable get route success!');
+      console.log('find clients get route success!');
       res.send(clients);
     } // end else
-  }); // end find get bussiness contact route
+  }); // end find get clients route
+}); // end get route
+
+// route to retrieve all reports
+router.get('/reports', function (req, res) {
+  console.log('in reports get route');
+  newReport.find({}, function (err, reports) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('find reports get route success!');
+      res.send(reports);
+    } // end else
+  }); // end find get reports route
 }); // end get route
 
 // post route to post a new client

@@ -43,6 +43,18 @@ h1, h2, h3, p {
   border-radius: 50%;
   width: 30px;
 }
+.tooltip {
+  background-color: #fff;
+  border-radius: 2px;
+  margin: 5px 0;
+  padding: 4px 7px;
+}
+.tooltip h3 {
+  border-bottom: 1px solid #bfbfbf;
+}
+.tooltip p {
+  margin: 5px 0px;
+}
 a:link, a:visited {
   text-decoration: none;
 }
