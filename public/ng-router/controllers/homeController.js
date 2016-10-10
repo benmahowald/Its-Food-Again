@@ -120,11 +120,12 @@ $scope.init();
   }).then(function(response) {
       var report = response.data;
       for (var i = 0; i < report.length; i++) {
-        if($scope.bus_id === report[i].bus_id)
+        if($scope.bus_id === report[i].bus_id) {
         $scope.currentReportBusName = report[i].bus_name;
         $scope.newPortions = report[i].portions;
         $scope.newComment = report[i].comment;
-      }
+      } // end if
+      } // end for
       console.log(report);
       // $scope.;
   }, function(err) {

@@ -16,6 +16,13 @@ var businessSupply = new Schema({
     street: String,
     zip: Number
   },
+  portions: Number,
+  comment: String,
+  date_added: {
+    type: Date,
+    default: new Date(),
+    required: true
+  }
   admin: {type: Boolean, default: false, required: true}
 });
 
