@@ -73,7 +73,7 @@ router.post('/client', function (req, res){
 router.post('/report/:id?', function (req, res){
   console.log('in client/report post route');
   console.log('req params:', req.params.id);
-    newClient.findByIdAndUpdate({_id: req.params.id}, {portion: req.body.report.portions, comment: req.body.report.comment}, function (err, report) {
+    newClient.findByIdAndUpdate(req.params.id, {$push: {portion: req.body.report.portions, comment: req.body.report.comment}}, function (err, report) {
       if (err) {
         console.log('didn"t do anything lozah');
         res.sendStatus(500);
