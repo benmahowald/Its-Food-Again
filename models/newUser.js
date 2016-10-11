@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// console.log('newUser Schema sourced');
+var Report = require('./newReport');
 
-var businessSupply = new Schema({
+// console.log('newUser Schema sourced');
+var client = new Schema({
   token: String,
   bus_name: String,
   bus_phone: String,
@@ -11,20 +12,14 @@ var businessSupply = new Schema({
   contact_name: String,
   contact_email: String,
   address: {
-    city: String,
-    state: String,
-    street: String,
-    zip: Number
+    city: {type: String, required: true},
+    state: {type: String, required: true},
+    street: {type: String, required: true},
+    zip: {type: Number, required: true}
   },
-  portions: Number,
-  comment: String,
-  date_added: {
-    type: Date,
-    default: new Date(),
-    required: true
-  }
+  report: [{type: mongoose.Schema.Types.ObjectId, ref: 'Report'}],
   admin: {type: Boolean, default: false, required: true}
 });
 
-var clients = mongoose.model('clients', businessSupply);
+var clients = mongoose.model('clients', client);
 module.exports = clients;

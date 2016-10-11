@@ -4,17 +4,17 @@ myApp.controller('postFoodController', ['$scope', '$http', function($scope, $htt
   $scope.submitFood = function () {
     console.log('in submitFood');
     var foodToSend = {
-      portions: $scope.portions,
-      bus_name: $scope.bus_name,
-      bus_id: $scope.bus_id,
-      comment: $scope.comment,
+      report: {
+        portions: $scope.portions,
+        comment: $scope.comment
+      }
     }; // end contact to send
     $http({
       method: 'POST',
-      url: '/client/report',
+      url: '/report/' + $scope.currentBus_id,
       data: foodToSend
     }).then(function (response){
-          console.log('http post /client success:', response);
+          console.log('http post report success:', response);
         }, function (error) {
           console.log('error in post;', error);
         }); // end then function

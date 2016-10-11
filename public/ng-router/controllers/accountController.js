@@ -12,7 +12,7 @@ myApp.controller('accountController', ['$scope', '$http', function($scope, $http
       contact_email: userProfile.email,
       address: {
         city: $scope.city,
-        state: $scope.state, //(option) list of states drop down
+        state: $scope.state,
         street: $scope.address,
         zip: $scope.zip
       },

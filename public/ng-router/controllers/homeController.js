@@ -1,3 +1,4 @@
+console.log('line 1');
 // declare user roles
 var guest = 1;
 var user = 2;
@@ -14,6 +15,57 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http){
     localStorage.removeItem( 'userProfile' );
     localStorage.removeItem( 'userToken' );
   }; // end emptyLocalStorage
+
+  // uniquely identify user by emal
+  var checkUser = function(profileEmail){
+    console.log('in checkUser');
+    // get call to retrive clients from DB
+    $http({
+      method: 'GET',
+      url: '/client',
+    }).then(function(response) {
+        $scope.clients = response.data;
+        console.log($scope.clients);
+        // iterate over client emails and match with current user
+        for (var i = 0; i < $scope.clients.length; i++) {
+          if(profileEmail === $scope.clients[i].contact_email){
+            console.log("there's a match in the database");
+            // set match to manipulate DOM
+            $scope.match = true;
+            $scope.currentBus_id = $scope.clients[i]._id;
+        }else{
+            console.log('no match in the db');
+            $scope.match = false;
+        } // end else
+        } // end for loop
+        mapFunction($scope.clients);
+      }, function(err) {
+        console.log('error in retrieving clients:', err);
+      }); // end then function
+}; // end checkUser Function
+
+$scope.init = function(){
+  console.log( 'in init' );
+
+  // check if a user's info is saved in localStorage
+  if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
+    // if so, save userProfile as $scope.userProfile
+    $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
+    console.log( 'loggedIn:', $scope.userProfile);
+    $scope.showUser = true;
+    checkUser($scope.userProfile.email);
+  }
+  else{
+    // if not, make sure we are logged out and empty
+    emptyLocalStorage();
+    $scope.showUser = false;
+    checkUser();
+  }
+}; // end init function
+console.log('before init call');
+// run init on controller load
+$scope.init();
+console.log('after init call');
 
   // initialize map to show on load
   $scope.map = true;
@@ -59,79 +111,10 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http){
       } // end if
     }); // end then
   }; // end scope.logOut
-
-  // uniquely identify user by emal
-  var checkUser = function(profileEmail){
-    // console.log('in checkUser');
-    // get call to retrive clients from DB
-    $http({
-      method: 'GET',
-      url: '/client',
-    }).then(function(response) {
-        $scope.clients = response.data;
-
-        // iterate over client emails and match with current user
-        for (var i = 0; i < $scope.clients.length; i++) {
-          if(profileEmail === $scope.clients[i].contact_email){
-            console.log("there's a match in the database");
-            // set match to manipulate DOM
-            $scope.match = true;
-            // grab business name and ID to use in postFoodController
-            // to associate a donation with a specific bussiness account
-            $scope.bus_name = $scope.clients[i].bus_name;
-            $scope.bus_id = $scope.clients[i]._id;
-            console.log($scope.bus_name + ' ' + $scope.bus_id);
-        }else{
-            $scope.match = false;
-        } // end else
-        } // end for loop
-    }, function(err) {
-      console.log('error in retrieving clients:', err);
-    }); // end then function
-}; // end checkUser Function
-
-$scope.init = function(){
-  console.log( 'in init' );
-
-  // check if a user's info is saved in localStorage
-  if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
-    // if so, save userProfile as $scope.userProfile
-    $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
-    console.log( 'loggedIn:', $scope.userProfile);
-    $scope.showUser = true;
-    checkUser($scope.userProfile.email);
-  }
-  else{
-    // if not, make sure we are logged out and empty
-    emptyLocalStorage();
-    $scope.showUser = false;
-  }
-}; // end init function
-
-// run init on controller load
-$scope.init();
-
-
 ///////////////////// Map /////////////////////////////////////
-  // get call to retrieve report to display in map tooltip
-  $http({
-    method: 'GET',
-    url: '/reports',
-  }).then(function(response) {
-      var report = response.data;
-      for (var i = 0; i < report.length; i++) {
-        if($scope.bus_id === report[i].bus_id) {
-        $scope.currentReportBusName = report[i].bus_name;
-        $scope.newPortions = report[i].portions;
-        $scope.newComment = report[i].comment;
-      } // end if
-      } // end for
-      console.log(report);
-      // $scope.;
-  }, function(err) {
-    console.log('error in retrieving reports:', err);
-  }); // end then function
-
+console.log('about to load map');
+var mapFunction = function (clients) {
+  console.log(clients);
 google.charts.load('upcoming', {packages: ['map']});
     google.charts.setOnLoadCallback(drawMap);
 
@@ -139,12 +122,12 @@ google.charts.load('upcoming', {packages: ['map']});
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Address');
       data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
-
-      data.addRows([
-        // ['9401 James Avenue S, Bloomington, MN 55431, United States', 'Prime Digital Academy'],
-        ['3445 5th ave s, mpls, mn', createCustomHTMLContent($scope.currentReportBusName, $scope.newPortions, $scope.newComment)],
-        // ['3445 5th ave s, mpls, mn', 'Home']
-      ]);
+        for (var i = 0; i < clients.length; i++) {
+          // console.log($scope.clients[i].report.pop());
+          data.addRows([
+            [clients[i].address.street + ', ' + clients[i].address.city + ', ' + clients[i].address.state + ', ' + clients[i].address.zip, createCustomHTMLContent(clients[i].bus_name, 0, clients[i].report.comment)],
+          ]); // end addRows
+      } // end for loop
 
       var options = {
         mapType: 'styledMap',
@@ -184,4 +167,6 @@ google.charts.load('upcoming', {packages: ['map']});
         '<p>Portions: ' + portions + '</p><p>Description: ' + comment + '</p></div>';
       } // end html content function
     } // end draw map function
+    console.log('end draw function');
+  };
 }]); // end authController
