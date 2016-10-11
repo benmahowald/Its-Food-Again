@@ -28,11 +28,16 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http){
         console.log($scope.clients);
         // iterate over client emails and match with current user
         for (var i = 0; i < $scope.clients.length; i++) {
+          console.log('profileEmail:', profileEmail);
+          console.log('$scope.clients[i].contact_email:', $scope.clients[i].contact_email);
+          console.log(profileEmail === $scope.clients[i].contact_email);
           if(profileEmail === $scope.clients[i].contact_email){
             console.log("there's a match in the database");
             // set match to manipulate DOM
             $scope.match = true;
             $scope.currentBus_id = $scope.clients[i]._id;
+            mapFunction($scope.clients);
+            return;
         }else{
             console.log('no match in the db');
             $scope.match = false;
@@ -111,6 +116,16 @@ console.log('after init call');
       } // end if
     }); // end then
   }; // end scope.logOut
+
+  $http({
+    method: 'GET',
+    url: '/reports',
+  }).then(function(response) {
+    console.log(response.data);
+    $scope.reports = response.data;
+  }, function(err) {
+    console.log('error in retrieving reports:', err);
+  }); // end then function
 ///////////////////// Map /////////////////////////////////////
 console.log('about to load map');
 var mapFunction = function (clients) {
@@ -122,11 +137,16 @@ google.charts.load('upcoming', {packages: ['map']});
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Address');
       data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
+      // loop through clients and add a point on map for each one
         for (var i = 0; i < clients.length; i++) {
-          // console.log($scope.clients[i].report.pop());
+          // loop through reports and match with client to display lastest portion and comment
+          for (var j = 0; j < $scope.reports.length; j++) {
+          if(clients[i]._id === $scope.reports[j].bus_id){
           data.addRows([
-            [clients[i].address.street + ', ' + clients[i].address.city + ', ' + clients[i].address.state + ', ' + clients[i].address.zip, createCustomHTMLContent(clients[i].bus_name, 0, clients[i].report.comment)],
+            [clients[i].address.street + ', ' + clients[i].address.city + ', ' + clients[i].address.state + ', ' + clients[i].address.zip, createCustomHTMLContent(clients[i].bus_name, $scope.reports[j].portions, $scope.reports[j].comment)],
           ]); // end addRows
+        } // end if statement
+      } // end reports loop
       } // end for loop
 
       var options = {

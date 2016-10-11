@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Report = require('./newReport');
 
 // console.log('newUser Schema sourced');
 var client = new Schema({
@@ -17,7 +16,6 @@ var client = new Schema({
     street: {type: String, required: true},
     zip: {type: Number, required: true}
   },
-  report: [{type: mongoose.Schema.Types.ObjectId, ref: 'Report'}],
   admin: {type: Boolean, default: false, required: true}
 });
 

@@ -5,6 +5,7 @@ myApp.controller('postFoodController', ['$scope', '$http', function($scope, $htt
     console.log('in submitFood');
     var foodToSend = {
       report: {
+        bus_id: $scope.currentBus_id,
         portions: $scope.portions,
         comment: $scope.comment
       }
