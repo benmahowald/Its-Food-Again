@@ -25,7 +25,7 @@ router.get('/client', function (req, res) {
 }); // end get route
 
 // route to retrieve all reports
-router.get('/reports', function (req, res) {
+router.get('/reports/:busid?', function (req, res) {
   console.log('in reports get route');
   newReport.find({}, function (err, reports) {
     if (err) {
@@ -73,7 +73,7 @@ router.post('/client', function (req, res){
 router.post('/report/:id?', function (req, res){
   console.log('in client/report post route');
   console.log('req params:', req.params.id);
-    newClient.update(req.params.id, {$push: {portion: req.body.report.portions, comment: req.body.report.comment}}, function (err, report) {
+    newClient.find({}).sort([['date_added', -1]]).exec(function (err, report) {
       if (err) {
         console.log('didn"t do anything lozah');
         res.sendStatus(500);

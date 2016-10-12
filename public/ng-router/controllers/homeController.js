@@ -147,6 +147,8 @@ $scope.init();
           // loop through reports and match with client to display lastest portion and comment
           for (var j = 0; j < $scope.reports.length; j++) {
             // pull reports by client id
+            console.log(i);
+            console.log(j);
             if($scope.clients[i]._id === $scope.reports[j].bus_id){
               data.addRows([
                 [$scope.clients[i].address.street + ', ' + $scope.clients[i].address.city + ', ' + $scope.clients[i].address.state + ', ' + $scope.clients[i].address.zip, createCustomHTMLContent($scope.clients[i].bus_name, $scope.reports[j].portions, $scope.reports[j].comment)],
