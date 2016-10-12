@@ -1,4 +1,4 @@
-console.log('line 1');
+// console.log('home controller sourced');
 // declare user roles
 var guest = 1;
 var user = 2;
@@ -18,39 +18,34 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http){
 
   // uniquely identify user by emal
   var checkUser = function(profileEmail){
-    console.log('in checkUser');
+    // console.log('in checkUser');
     // get call to retrive clients from DB
     $http({
       method: 'GET',
       url: '/client',
     }).then(function(response) {
-        $scope.clients = response.data;
-        console.log($scope.clients);
+        var clients = response.data;
         // iterate over client emails and match with current user
-        for (var i = 0; i < $scope.clients.length; i++) {
-          console.log('profileEmail:', profileEmail);
-          console.log('$scope.clients[i].contact_email:', $scope.clients[i].contact_email);
-          console.log(profileEmail === $scope.clients[i].contact_email);
-          if(profileEmail === $scope.clients[i].contact_email){
+        for (var i = 0; i < clients.length; i++) {
+          if(profileEmail === clients[i].contact_email){
             console.log("there's a match in the database");
             // set match to manipulate DOM
             $scope.match = true;
-            $scope.currentBus_id = $scope.clients[i]._id;
-            mapFunction($scope.clients);
+            $scope.currentBus_id = clients[i]._id;
             return;
         }else{
             console.log('no match in the db');
             $scope.match = false;
         } // end else
         } // end for loop
-        mapFunction($scope.clients);
+        $scope.mapFunction();
       }, function(err) {
         console.log('error in retrieving clients:', err);
       }); // end then function
 }; // end checkUser Function
 
 $scope.init = function(){
-  console.log( 'in init' );
+  // console.log( 'in init' );
 
   // check if a user's info is saved in localStorage
   if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
@@ -67,10 +62,9 @@ $scope.init = function(){
     checkUser();
   }
 }; // end init function
-console.log('before init call');
+
 // run init on controller load
 $scope.init();
-console.log('after init call');
 
   // initialize map to show on load
   $scope.map = true;
@@ -117,6 +111,7 @@ console.log('after init call');
     }); // end then
   }; // end scope.logOut
 
+// get call retrieves all reports and passes it to loop in mapFunction
   $http({
     method: 'GET',
     url: '/reports',
@@ -126,28 +121,45 @@ console.log('after init call');
   }, function(err) {
     console.log('error in retrieving reports:', err);
   }); // end then function
+
+  $http({
+    method: 'GET',
+    url: '/client',
+  }).then(function(response) {
+    console.log(response.data);
+    $scope.clients = response.data;
+  }, function(err) {
+    console.log('error in retrieving clients:', err);
+  }); // end then function
+
 ///////////////////// Map /////////////////////////////////////
-console.log('about to load map');
-var mapFunction = function (clients) {
-  console.log(clients);
-google.charts.load('upcoming', {packages: ['map']});
-    google.charts.setOnLoadCallback(drawMap);
+ $scope.mapFunction = function () {
+  console.log($scope.clients);
+  google.charts.load('upcoming', {packages: ['map']});
+  google.charts.setOnLoadCallback(drawMap);
 
     function drawMap () {
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Address');
       data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
       // loop through clients and add a point on map for each one
-        for (var i = 0; i < clients.length; i++) {
+        for (var i = 0; i < $scope.clients.length; i++) {
           // loop through reports and match with client to display lastest portion and comment
           for (var j = 0; j < $scope.reports.length; j++) {
-          if(clients[i]._id === $scope.reports[j].bus_id){
-          data.addRows([
-            [clients[i].address.street + ', ' + clients[i].address.city + ', ' + clients[i].address.state + ', ' + clients[i].address.zip, createCustomHTMLContent(clients[i].bus_name, $scope.reports[j].portions, $scope.reports[j].comment)],
-          ]); // end addRows
-        } // end if statement
-      } // end reports loop
-      } // end for loop
+            // pull reports by client id
+            console.log(i + '-client id',$scope.clients[i]._id);
+            console.log(j + '-report bus_id',$scope.reports[j].bus_id);
+            if($scope.clients[i]._id === $scope.reports[j].bus_id){
+              data.addRows([
+                [$scope.clients[i].address.street + ', ' + $scope.clients[i].address.city + ', ' + $scope.clients[i].address.state + ', ' + $scope.clients[i].address.zip, createCustomHTMLContent($scope.clients[i].bus_name, $scope.reports[j].portions, $scope.reports[j].comment)],
+              ]); // end addRows
+            }else {
+              data.addRows([
+                [$scope.clients[i].address.street + ', ' + $scope.clients[i].address.city + ', ' + $scope.clients[i].address.state + ', ' + $scope.clients[i].address.zip, createCustomHTMLContent($scope.clients[i].bus_name, 0, 'Check back later for updates.')],
+              ]); // end addRows
+            } // end if/else statement
+          } // end reports loop
+        } // end clients loop
 
       var options = {
         mapType: 'styledMap',
@@ -187,6 +199,6 @@ google.charts.load('upcoming', {packages: ['map']});
         '<p>Portions: ' + portions + '</p><p>Description: ' + comment + '</p></div>';
       } // end html content function
     } // end draw map function
-    console.log('end draw function');
-  };
+  }; // end map function
+  $scope.mapFunction();
 }]); // end authController
