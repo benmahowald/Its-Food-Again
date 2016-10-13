@@ -3,8 +3,8 @@ html, body {
   margin: 0;
   top: 0;
   color: #5d86a4;
-  font-style: arial, sans-serif;
   font-weight: lighter;
+  letter-spacing: 1px;
 }
 h1, h2, h3, p {
   font-weight: lighter;
@@ -30,6 +30,20 @@ h1, h2, h3, p {
 }
 .navButton:hover {
   background: linear-gradient(#fff, #f2efef); /* Standard syntax */
+}
+.dropdown {
+  display: table-cell;
+}
+.dropdown-menu>li {
+}
+.dropdown-menu>li>a {
+  padding: 7px 20px;
+  font-weight: lighter;
+  background-color: #fff;
+  color: #5d86a4;
+}
+.dropdown-menu>li>a:hover {
+  background-color: #fff;
 }
 .logo {
   margin-right: 55px;
@@ -60,6 +74,7 @@ a:link, a:visited {
 }
 a:hover {
   background-color: #fefaf0;
+  text-decoration: none;
 }
 a:active {
   /*the moment it is clicked*/
