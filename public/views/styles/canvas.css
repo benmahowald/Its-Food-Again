@@ -4,9 +4,8 @@ html, body {
   top: 0;
   color: #5d86a4;
   font-weight: lighter;
-  letter-spacing: 1px;
 }
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
   font-weight: lighter;
 }
 .header {
@@ -57,16 +56,16 @@ h1, h2, h3, p {
   border-radius: 50%;
   width: 30px;
 }
-.tooltip {
+.infoPane {
   background-color: #fff;
   border-radius: 2px;
   margin: 5px 0;
   padding: 4px 7px;
 }
-.tooltip h3 {
+.infoPane h4 {
   border-bottom: 1px solid #bfbfbf;
 }
-.tooltip p {
+.infoPane p {
   margin: 5px 0px;
 }
 a:link, a:visited {
