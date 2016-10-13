@@ -3,10 +3,9 @@ html, body {
   margin: 0;
   top: 0;
   color: #5d86a4;
-  font-style: arial, sans-serif;
   font-weight: lighter;
 }
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
   font-weight: lighter;
 }
 .header {
@@ -31,6 +30,20 @@ h1, h2, h3, p {
 .navButton:hover {
   background: linear-gradient(#fff, #f2efef); /* Standard syntax */
 }
+.dropdown {
+  display: table-cell;
+}
+.dropdown-menu>li {
+}
+.dropdown-menu>li>a {
+  padding: 7px 20px;
+  font-weight: lighter;
+  background-color: #fff;
+  color: #5d86a4;
+}
+.dropdown-menu>li>a:hover {
+  background-color: #fff;
+}
 .logo {
   margin-right: 55px;
   font-size: x-large;
@@ -43,16 +56,16 @@ h1, h2, h3, p {
   border-radius: 50%;
   width: 30px;
 }
-.tooltip {
+.infoPane {
   background-color: #fff;
   border-radius: 2px;
   margin: 5px 0;
   padding: 4px 7px;
 }
-.tooltip h3 {
+.infoPane h4 {
   border-bottom: 1px solid #bfbfbf;
 }
-.tooltip p {
+.infoPane p {
   margin: 5px 0px;
 }
 a:link, a:visited {
@@ -60,6 +73,7 @@ a:link, a:visited {
 }
 a:hover {
   background-color: #fefaf0;
+  text-decoration: none;
 }
 a:active {
   /*the moment it is clicked*/
