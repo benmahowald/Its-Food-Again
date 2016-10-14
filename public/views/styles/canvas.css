@@ -4,6 +4,7 @@ html, body {
   top: 0;
   color: #5d86a4;
   font-weight: lighter;
+  letter-spacing: .5px;
 }
 h1, h2, h3, h4, p {
   font-weight: lighter;
@@ -62,7 +63,7 @@ h1, h2, h3, h4, p {
   margin: 5px 0;
   padding: 4px 7px;
 }
-.infoPane h4 {
+.infoPane h3 {
   border-bottom: 1px solid #bfbfbf;
 }
 .infoPane p {
@@ -83,7 +84,7 @@ a:active {
   border-bottom: 1px solid #bfbfbf;
   z-index: 1;
 }
-.createContainer, .postContainer {
+.createContainer, .postContainer, .aboutContainer {
   width: 400px;
   max-width: 95%;
   margin: auto auto;

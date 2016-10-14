@@ -17,6 +17,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="ng-router/controllers/accountController.js" type="text/javascript"></script>
     <script src="ng-router/controllers/homeController.js" type="text/javascript"></script>
+    <script src="ng-router/controllers/aboutController.js" type="text/javascript"></script>
     <script src="ng-router/controllers/postFoodController.js" type="text/javascript"></script>
   </head>
   <body ng-app="myApp" ng-controller="homeController">
@@ -28,7 +29,7 @@
         <a href="#" class="navButton" ng-hide="showUser " ng-click="logIn()">Log In</a>
         <a href="#create" class="navButton" ng-show="showUser && !match" ng-click="hideMap()">Create Account</a>
         <a href="#postFood" class="navButton" ng-show="showUser" ng-click="hideMap()">Donate Food</a>
-
+        <a href="#about" class="navButton" ng-click="hideMap()">About</a>
 
         <div class="dropdown" ng-show="showUser">
           <a class="navButton dropdown-toggle" type="button" data-toggle="dropdown">Profile
