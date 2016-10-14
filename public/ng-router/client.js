@@ -1,6 +1,6 @@
 // console.log('sourced client.js');
 
-var myApp = angular.module('myApp', ["ngRoute"]);
+var myApp = angular.module('myApp', ["ngRoute", "xeditable"]);
 
 // config routes
 myApp.config(["$routeProvider", function($routeProvider){
@@ -16,6 +16,10 @@ myApp.config(["$routeProvider", function($routeProvider){
     .when("/about", {
       templateUrl: "/views/partials/about.html",
       controller: "aboutController"
+    })
+    .when("/manage", {
+      templateUrl: "/views/partials/manageAccount.html",
+      controller: "manageAccountController"
     })
     .otherwise( {
       redirectTo: "/"

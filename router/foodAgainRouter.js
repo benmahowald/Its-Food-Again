@@ -20,7 +20,7 @@ router.get('/client', function (req, res) {
     } else {
       console.log('find clients get route success!');
       res.send(clients);
-    } // end else
+    }
   }); // end find get clients route
 }); // end get route
 
@@ -99,5 +99,19 @@ sendReport.save(function(err){
   } // end else
 }); // end sendClient save
 }); // end post route
+
+router.put('/client/:id?', function (req, res) {
+  console.log('in client get route');
+  newClient.find({'_id': req.params.id}, function (err, clients) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('find clients get route success!');
+      res.send(clients);
+    } // end else
+    }); // end find get clients route
+  }); // end put route
+
 // export to router
 module.exports = router;

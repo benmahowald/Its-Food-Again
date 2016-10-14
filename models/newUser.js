@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 
 // console.log('newUser Schema sourced');
 var client = new Schema({
-  token: String,
   bus_name: String,
   bus_phone: String,
   bus_type: String,

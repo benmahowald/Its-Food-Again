@@ -84,7 +84,7 @@ a:active {
   border-bottom: 1px solid #bfbfbf;
   z-index: 1;
 }
-.createContainer, .postContainer, .aboutContainer {
+.createContainer, .postContainer, .aboutContainer, .manageAccount {
   width: 400px;
   max-width: 95%;
   margin: auto auto;
