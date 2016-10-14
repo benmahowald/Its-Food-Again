@@ -1,4 +1,4 @@
-Food insecurity: the social and economic problem of lack of food due to resource. 
+Food insecurity: the social and economic problem of lack of food due to resource.
 
 40% of food produced in the US is thrown away.
 
@@ -11,9 +11,6 @@ A food donor has never been sued in the US.
 
 Petition for small business tax break in the app.
 App verifies location and allows you to add your name to a petition.
-
-Map interaction ideas:
-Zoom into map from global view directly to Minneapolis neighborhoods.
 
 http://mapstyle.withgoogle.com
 
