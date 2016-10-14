@@ -13,6 +13,10 @@ myApp.config(["$routeProvider", function($routeProvider){
       templateUrl: "/views/partials/postFood.html",
       controller: "postFoodController"
     })
+    .when("/about", {
+      templateUrl: "/views/partials/about.html",
+      controller: "aboutController"
+    })
     .otherwise( {
       redirectTo: "/"
     });

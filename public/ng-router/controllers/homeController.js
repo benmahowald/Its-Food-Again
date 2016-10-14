@@ -191,7 +191,7 @@ $scope.init();
       map.draw(data, options);
 
       function createCustomHTMLContent(name, portions, comment) {
-        return '<div class="tooltip">' + '<h3>' + name + '</h3>' +
+        return '<div class="infoPane">' + '<h3>' + name + '</h3>' +
         '<p>Portions: ' + portions + '</p><p>Description: ' + comment + '</p></div>';
       } // end html content function
     } // end draw map function
