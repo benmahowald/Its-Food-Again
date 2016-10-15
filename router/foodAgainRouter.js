@@ -11,8 +11,20 @@ var newClient = require('../models/newUser');
 var newReport = require('../models/newReport');
 
 // route to retrieve all clients
-router.get('/client', function (req, res) {
+router.get('/client/:id?', function (req, res) {
   console.log('in client get route');
+  console.log(req.params.id);
+  if(req.params.id) {
+  newClient.findById(req.params.id, function (err, clients) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('found client ' + req.params.id + ' in get route.');
+      res.send(clients);
+    }
+  }); // end find get clients route
+} else {
   newClient.find({}, function (err, clients) {
     if (err) {
       console.log(err);
@@ -22,6 +34,7 @@ router.get('/client', function (req, res) {
       res.send(clients);
     }
   }); // end find get clients route
+}
 }); // end get route
 
 // route to retrieve all reports
@@ -100,17 +113,17 @@ sendReport.save(function(err){
 }); // end sendClient save
 }); // end post route
 
-router.put('/client/:id?', function (req, res) {
+router.put('/client/:id', function (req, res) {
   console.log('in client get route');
-  newClient.find({'_id': req.params.id}, function (err, clients) {
-    if (err) {
-      console.log(err);
-      res.sendStatus(500);
-    } else {
-      console.log('find clients get route success!');
-      res.send(clients);
-    } // end else
-    }); // end find get clients route
+    newClient.findByIdAndUpdate(req.params.id, req.body, {}, function (err, client) {
+        if (err) {
+          console.log(err);
+          res.sendStatus(500);
+        } else {
+          console.log('find clients put route success:', client);
+          res.send(client);
+        } // end else
+      }); // end find get clients route
   }); // end put route
 
 // export to router

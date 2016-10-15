@@ -8,14 +8,13 @@ myApp.controller('accountController', ['$scope', '$http', function($scope, $http
       bus_name: $scope.bus_name,
       bus_phone: $scope.bus_phone,
       bus_type: $scope.bus_type,
+      pickup_time: $scope.pickup_time,
       contact_name: $scope.contact_name,
       contact_email: userProfile.email,
-      address: {
-        city: $scope.city,
-        state: $scope.state,
-        street: $scope.address,
-        zip: $scope.zip
-      },
+      city: $scope.city,
+      state: $scope.state,
+      street: $scope.address,
+      zip: $scope.zip
     }; // end contact to send
     $http({
       method: 'POST',

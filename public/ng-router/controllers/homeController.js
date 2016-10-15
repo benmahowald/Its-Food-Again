@@ -144,12 +144,13 @@ $scope.init();
       data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
       // loop through clients and add a point on map for each one
         for (var i = 0; i < $scope.clients.length; i++) {
+          console.log($scope.clients);
           // loop through reports and match with client to display lastest portion and comment
           for (var j = 0; j < $scope.reports.length; j++) {
             // pull reports by client id
             if($scope.clients[i]._id === $scope.reports[j].bus_id){
               data.addRows([
-                [$scope.clients[i].address.street + ', ' + $scope.clients[i].address.city + ', ' + $scope.clients[i].address.state + ', ' + $scope.clients[i].address.zip, createCustomHTMLContent($scope.clients[i].bus_name, $scope.reports[j].portions, $scope.reports[j].comment)],
+                [$scope.clients[i].street + ', ' + $scope.clients[i].city + ', ' + $scope.clients[i].state + ', ' + $scope.clients[i].zip, createCustomHTMLContent($scope.clients[i].bus_name, $scope.clients[i].street, $scope.clients[i].city, $scope.clients[i].state, $scope.clients[i].zip, $scope.reports[j].portions, $scope.reports[j].comment)],
               ]); // end addRows
             }
           } // end reports loop
@@ -188,9 +189,10 @@ $scope.init();
 
       map.draw(data, options);
 
-      function createCustomHTMLContent(name, portions, comment) {
-        return '<div class="infoPane">' + '<h3>' + name + '</h3>' +
-        '<p>Portions: ' + portions + '</p><p>Description: ' + comment + '</p></div>';
+      function createCustomHTMLContent(name, street, city, state, zip, portions, comment) {
+        return '<div class="infoPane">' + '<h3>' + name + '</h3><p>' + street + ', ' + city +
+        ', ' + state + ', ' + zip + '.</p>' + '<p>Portions: ' + portions + '</p><p>Description: '
+        + comment + '</p></div>';
       } // end html content function
     } // end draw map function
   }; // end map function

@@ -1,4 +1,16 @@
 <div ng-app="app" class="manageAccount">
   <h2>Manage Account</h2>
-  <a href="#" editable-text="currentClient.bus_name">{{ currentClient.bus_name || "empty" }}</a>
+  <section>
+    <h4>Business Info</h4>
+    Name: <a href="#" buttons="no" editable-text="clientData.bus_name" onbeforesave="updateClient({bus_name: $data})" blur="submit">{{ clientData.bus_name || "empty" }}</a><br>
+    Contact: <a href="#" buttons="no" editable-text="clientData.contact_name" onbeforesave="updateClient({contact_name: $data})" blur="submit">{{ clientData.contact_name || "empty" }}</a><br>
+    Phone: <a href="#" buttons="no" editable-text="clientData.bus_phone" onbeforesave="updateClient({bus_phone: $data})" blur="submit">{{ clientData.bus_phone || "empty" }}</a><br>
+    Pick-up Time: <a href="#" buttons="no" editable-text="clientData.pickup_time" onbeforesave="updateClient({pickup_time: $data})" blur="submit">{{ clientData.pickup_time || "empty" }}</a><br>
+  </section>
+  <section>
+    Street: <a href="#" buttons="no" editable-text="clientData.street" onbeforesave="updateClient({street: $data})" blur="submit">{{ clientData.street || "empty" }}</a><br>
+    City: <a href="#" buttons="no" editable-text="clientData.city" onbeforesave="updateClient({city: $data})" blur="submit">{{ clientData.city || "empty" }}</a><br>
+    State: <a href="#" buttons="no" editable-text="clientData.state" onbeforesave="updateClient({state: $data})" blur="submit">{{ clientData.state || "empty" }}</a><br>
+    ZIP: <a href="#" buttons="no" editable-text="clientData.zip" onbeforesave="updateClient({zip: $data})" blur="submit">{{ clientData.zip || "empty" }}</a><br>
+  </section>
 </div>
