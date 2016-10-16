@@ -4,7 +4,7 @@ html, body {
   top: 0;
   color: #5d86a4;
   font-weight: lighter;
-  letter-spacing: .5px;
+  letter-spacing: 1px;
 }
 h1, h2, h3, h4, p {
   font-weight: lighter;

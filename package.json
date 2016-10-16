@@ -1,5 +1,5 @@
 {
-  "name": "It's Food Again",
+  "name": "ItsFoodAgain",
   "version": "1.0.0",
   "description": "Prime Digital Academy MEAN Stack Solo Project",
   "main": "index.js",
@@ -19,5 +19,8 @@
     "jquery": "^3.1.1",
     "mongo": "^0.1.0",
     "mongoose": "^4.6.2"
+  },
+  "engines": {
+    "node": "v6.5.0"
   }
 }
