@@ -28,6 +28,8 @@ myApp.controller('accountController', ['$scope', '$http', function($scope, $http
         }); // end then function
     console.log(contactToSend);
     clearFields();
+    window.location.href="#";
+    $scope.showMap();
     location.reload();
   }; // end submitAccount function
   var clearFields = function() {

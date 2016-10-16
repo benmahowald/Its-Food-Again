@@ -32,7 +32,7 @@
         <a href="#" class="navButton" ng-click="showMap()">Map</a>
         <a href="#about" class="navButton" ng-click="hideMap()">About</a>
         <a href="#create" class="navButton" ng-show="showUser && !match" ng-click="hideMap()">Create Account</a>
-        <a href="#" class="navButton" ng-hide="showUser " ng-click="logIn()">Log In</a>
+        <a class="navButton" ng-hide="showUser " ng-click="logIn()">Log In</a>
         <div class="dropdown" ng-show="showUser">
           <a class="navButton dropdown-toggle" type="button" data-toggle="dropdown">Profile
           <span class="caret"></span></a>
@@ -41,7 +41,7 @@
             <li class="divider"></li>
             <li><a href="#postFood" ng-show="match" ng-click="hideMap()">Donate Food</a></li>
             <li><a ng-click="hideMap()" ng-show="match" href="#manage">Manage Account</a></li>
-            <li class="divider"></li>
+            <li ng-hide="!match" class="divider"></li>
             <li><a href="#" ng-click="logOut()">Log Out</a></li>
           </ul>
         </div>
