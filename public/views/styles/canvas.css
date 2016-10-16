@@ -62,6 +62,7 @@ h1, h2, h3, h4, p {
   border-radius: 2px;
   margin: 5px 0;
   padding: 4px 7px;
+  max-width: 300px;
 }
 .infoPane h3 {
   border-bottom: 1px solid #bfbfbf;
@@ -87,10 +88,7 @@ a:active {
 .createContainer, .postContainer, .aboutContainer, .manageAccount {
   width: 400px;
   max-width: 95%;
-  margin: auto auto;
-}
-.report {
-
+  margin: 50px auto;
 }
 input, select, textarea {
   width: 250px;

@@ -11,6 +11,9 @@ var logOutUrl = 'https://ben-mahowald.auth0.com/v2/logout';
 myApp.controller('homeController', ['$scope', '$http', function($scope, $http){
   // console.log('in home controller');
 
+  $scope.reports = [];
+  $scope.clients = [];
+
   var emptyLocalStorage = function(){
     localStorage.removeItem( 'userProfile' );
     localStorage.removeItem( 'userToken' );
@@ -44,24 +47,24 @@ myApp.controller('homeController', ['$scope', '$http', function($scope, $http){
       }); // end then function
 }; // end checkUser Function
 
-$scope.init = function(){
-  // console.log( 'in init' );
+  $scope.init = function(){
+    // console.log( 'in init' );
 
-  // check if a user's info is saved in localStorage
-  if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
-    // if so, save userProfile as $scope.userProfile
-    $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
-    console.log( 'loggedIn:', $scope.userProfile);
-    $scope.showUser = true;
-    checkUser($scope.userProfile.email);
-  }
-  else{
-    // if not, make sure we are logged out and empty
-    emptyLocalStorage();
-    $scope.showUser = false;
-    checkUser();
-  }
-}; // end init function
+    // check if a user's info is saved in localStorage
+    if( JSON.parse( localStorage.getItem( 'userProfile' ) ) ){
+      // if so, save userProfile as $scope.userProfile
+      $scope.userProfile = JSON.parse( localStorage.getItem( 'userProfile' ) );
+      console.log( 'loggedIn:', $scope.userProfile);
+      $scope.showUser = true;
+      checkUser($scope.userProfile.email);
+    }
+    else{
+      // if not, make sure we are logged out and empty
+      emptyLocalStorage();
+      $scope.showUser = false;
+      checkUser();
+    }
+  }; // end init function
 
 // run init on controller load
 $scope.init();
@@ -111,46 +114,55 @@ $scope.init();
     }); // end then
   }; // end scope.logOut
 
-// get call retrieves all reports and passes it to loop in mapFunction
-  $http({
-    method: 'GET',
-    url: '/reports',
-  }).then(function(response) {
-    console.log(response.data);
-    $scope.reports = response.data;
-  }, function(err) {
-    console.log('error in retrieving reports:', err);
-  }); // end then function
+  //retrieves all reports and passes it to mapFunction
+  $scope.getReports = function () {
+    $http({
+      method: 'GET',
+      url: '/reports',
+    }).then(function(response) {
+      console.log(response.data);
+      $scope.reports = response.data;
+    }, function(err) {
+      console.log('error in retrieving reports:', err);
+    }); // end then function
+  };
 
-  $http({
-    method: 'GET',
-    url: '/client',
-  }).then(function(response) {
-    console.log(response.data);
-    $scope.clients = response.data;
-  }, function(err) {
-    console.log('error in retrieving clients:', err);
-  }); // end then function
+  $scope.getClients = function () {
+    $http({
+      method: 'GET',
+      url: '/client',
+    }).then(function(response) {
+      console.log(response.data);
+      $scope.clients = response.data;
+    }, function(err) {
+      console.log('error in retrieving clients:', err);
+    }); // end then function
+  };
+
+  $scope.getReports();
+  $scope.getClients();
 
 ///////////////////// Map /////////////////////////////////////
  $scope.mapFunction = function () {
-  console.log($scope.clients);
   google.charts.load('upcoming', {packages: ['map']});
   google.charts.setOnLoadCallback(drawMap);
-
+  console.log('clients -', $scope.clients);
+  console.log('reports -', $scope.reports);
+  $scope.getReports();
+  $scope.getClients();
     function drawMap () {
+      console.log('in drawmap');
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Address');
       data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
       // loop through clients and add a point on map for each one
         for (var i = 0; i < $scope.clients.length; i++) {
-          console.log($scope.clients);
           // loop through reports and match with client to display lastest portion and comment
           for (var j = 0; j < $scope.reports.length; j++) {
             // pull reports by client id
             if($scope.clients[i]._id === $scope.reports[j].bus_id){
               data.addRows([
-                [$scope.clients[i].street + ', ' + $scope.clients[i].city + ', ' + $scope.clients[i].state + ', ' + $scope.clients[i].zip, createCustomHTMLContent($scope.clients[i].bus_name, $scope.clients[i].street, $scope.clients[i].city, $scope.clients[i].state, $scope.clients[i].zip, $scope.reports[j].portions, $scope.reports[j].comment)],
+                [$scope.clients[i].street + ', ' + $scope.clients[i].city + ', ' + $scope.clients[i].state + ', ' + $scope.clients[i].zip, createCustomHTMLContent($scope.clients[i].bus_name, $scope.clients[i].street, $scope.clients[i].city, $scope.clients[i].state, $scope.clients[i].zip, $scope.clients[i].pickup_time, $scope.reports[j].portions, $scope.reports[j].comment)],
               ]); // end addRows
             }
           } // end reports loop
@@ -189,12 +201,12 @@ $scope.init();
 
       map.draw(data, options);
 
-      function createCustomHTMLContent(name, street, city, state, zip, portions, comment) {
+      function createCustomHTMLContent(name, street, city, state, zip, pickup_time, portions, comment) {
         return '<div class="infoPane">' + '<h3>' + name + '</h3><p>' + street + ', ' + city +
-        ', ' + state + ', ' + zip + '.</p>' + '<p>Portions: ' + portions + '</p><p>Description: '
-        + comment + '</p></div>';
+        ', ' + state + ', ' + zip + '.</p><p>Pickup Window: ' + pickup_time + '</p><p>Portions: ' + portions + '</p><p>Description: ' + comment + '</p></div>';
       } // end html content function
     } // end draw map function
+    $scope.map = true;
   }; // end map function
   $scope.mapFunction();
 }]); // end authController

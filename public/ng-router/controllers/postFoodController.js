@@ -10,6 +10,7 @@ myApp.controller('postFoodController', ['$scope', '$http', function($scope, $htt
         comment: $scope.comment
       }
     }; // end contact to send
+
     $http({
       method: 'POST',
       url: '/report/' + $scope.currentBus_id,
@@ -21,10 +22,11 @@ myApp.controller('postFoodController', ['$scope', '$http', function($scope, $htt
         }); // end then function
     console.log(foodToSend);
     clearFields();
+    location.reload();
   }; // end submitFood function
+
   var clearFields = function() {
     $scope.portions = '';
     $scope.comment = '';
-    google.charts.load("upcoming", {packages: ["map"]});
   }; // end clearFields
 }]); // end controller

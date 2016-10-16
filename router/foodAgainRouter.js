@@ -63,12 +63,11 @@ router.post('/client', function (req, res){
     bus_type: data.bus_type,
     contact_name: data.contact_name,
     contact_email: data.contact_email,
-    address: {
-      city: data.address.city,
-      state: data.address.state,
-      street: data.address.street,
-      zip: data.address.zip
-    }
+    city: data.city,
+    state: data.state,
+    street: data.street,
+    zip: data.zip,
+    pickup_time: data.pickup_time
   });
   console.log('sendClient:', sendClient);
   sendClient.save(function(err){

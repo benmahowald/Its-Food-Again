@@ -13,21 +13,22 @@ myApp.controller('accountController', ['$scope', '$http', function($scope, $http
       contact_email: userProfile.email,
       city: $scope.city,
       state: $scope.state,
-      street: $scope.address,
+      street: $scope.street,
       zip: $scope.zip
     }; // end contact to send
+    console.log('contactToSend', contactToSend);
     $http({
       method: 'POST',
       url: '/client',
       data: contactToSend
     }).then(function (response){
           console.log('http post /client success:', response);
-            google.charts.load("upcoming", {packages: ["map"]});
         }, function (error) {
           console.log('error in post;', error);
         }); // end then function
     console.log(contactToSend);
     clearFields();
+    location.reload();
   }; // end submitAccount function
   var clearFields = function() {
     $scope.bus_name = '';
@@ -35,6 +36,7 @@ myApp.controller('accountController', ['$scope', '$http', function($scope, $http
     $scope.bus_type = '';
     $scope.contact_name = '';
     $scope.city = '';
+    $scope.pickup_time = '';
     $scope.state = '';
     $scope.address = '';
     $scope.zip = '';

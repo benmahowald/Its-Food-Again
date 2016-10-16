@@ -30,8 +30,8 @@
       <div id="nav">
         <a href="#" class="navButton logo" ng-click="showMap()"><span class="logo">It's Food Again</span></a>
         <a href="#" class="navButton" ng-click="showMap()">Map</a>
-        <a href="#create" class="navButton" ng-show="showUser && !match" ng-click="hideMap()">Create Account</a>
         <a href="#about" class="navButton" ng-click="hideMap()">About</a>
+        <a href="#create" class="navButton" ng-show="showUser && !match" ng-click="hideMap()">Create Account</a>
         <a href="#" class="navButton" ng-hide="showUser " ng-click="logIn()">Log In</a>
         <div class="dropdown" ng-show="showUser">
           <a class="navButton dropdown-toggle" type="button" data-toggle="dropdown">Profile
@@ -39,8 +39,8 @@
           <ul class="dropdown-menu">
             <li class="dropdown-header"><a>{{userProfile.name}}</a></li>
             <li class="divider"></li>
-            <li><a href="#postFood" ng-click="hideMap()">Donate Food</a></li>
-            <li><a ng-click="hideMap()" href="#manage">Manage Account</a></li>
+            <li><a href="#postFood" ng-show="match" ng-click="hideMap()">Donate Food</a></li>
+            <li><a ng-click="hideMap()" ng-show="match" href="#manage">Manage Account</a></li>
             <li class="divider"></li>
             <li><a href="#" ng-click="logOut()">Log Out</a></li>
           </ul>
