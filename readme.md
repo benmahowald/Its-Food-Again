@@ -20,9 +20,11 @@ Technologies
 * Express
 * Angular
 * Angular Routing
+* Xeditable
 * Bootstrap
 * SASS
 * Mongo
 * Mongoose
+* Auth0 Authentication
 * Google Maps API(https://developers.google.com/maps)
 * Heroku
