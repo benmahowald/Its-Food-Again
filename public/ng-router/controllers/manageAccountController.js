@@ -23,4 +23,9 @@ myApp.controller('manageAccountController', ['$scope', '$http', function($scope,
   			data: data
   		}).then($scope.getClient);
   	};
+
+    $scope.reload = function () {
+      location.reload();
+    };
+
 }]); // end manage account controller

@@ -203,7 +203,7 @@ $scope.init();
 
       function createCustomHTMLContent(name, street, city, state, zip, pickup_time, portions, comment) {
         return '<div class="infoPane">' + '<h3>' + name + '</h3><p>' + street + ', ' + city +
-        ', ' + state + ', ' + zip + '.</p><p>Pickup Window: ' + pickup_time + '</p><p>Portions: ' + portions + '</p><p>Description: ' + comment + '</p></div>';
+        ', ' + state + ', ' + zip + '.</p><p><span class="marker">Pickup Window: </span>' + pickup_time + '</p><p><span class="marker">Portions: </span>' + portions + '</p><p><span class="marker">Description: </span>' + comment + '</p></div>';
       } // end html content function
     } // end draw map function
     $scope.map = true;

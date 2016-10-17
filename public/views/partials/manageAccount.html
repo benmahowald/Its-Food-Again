@@ -1,19 +1,19 @@
 <div ng-app="app" class="manageAccount">
   <h2>Manage Account</h2>
   <h4>Business Info</h4>
-  <form class="manage" editable-form name="editableForm" onaftersave="updateClient()">
-    Name: <span editable-text="clientData.bus_name" onbeforesave="updateClient({bus_name: $data})" blur="submit">{{ clientData.bus_name || "empty" }}</span><br>
-    Contact: <span editable-text="clientData.contact_name" onbeforesave="updateClient({contact_name: $data})" blur="submit">{{ clientData.contact_name || "empty" }}</span><br>
-    Phone: <span buttons="no" editable-text="clientData.bus_phone" onbeforesave="updateClient({bus_phone: $data})" blur="submit">{{ clientData.bus_phone || "empty" }}</span><br>
-    Pick-up Time: <span buttons="no" editable-text="clientData.pickup_time" onbeforesave="updateClient({pickup_time: $data})" blur="submit">{{ clientData.pickup_time || "empty" }}</span><br>
-    Street: <span buttons="no" editable-text="clientData.street" onbeforesave="updateClient({street: $data})" blur="submit">{{ clientData.street || "empty" }}</span><br>
-    City: <span buttons="no" editable-text="clientData.city" onbeforesave="updateClient({city: $data})" blur="submit">{{ clientData.city || "empty" }}</span><br>
-    State: <span buttons="no" editable-text="clientData.state" onbeforesave="updateClient({state: $data})" blur="submit">{{ clientData.state || "empty" }}</span><br>
-    ZIP: <span buttons="no" editable-text="clientData.zip" onbeforesave="updateClient({zip: $data})" blur="submit">{{ clientData.zip || "empty" }}</span><br>
+  <form class="manageForm" editable-form name="editableForm" onaftersave="updateClient()">
+    <span class="manageEl">Name: <span editable-text="clientData.bus_name" onbeforesave="updateClient({bus_name: $data})" blur="submit">{{ clientData.bus_name || "empty" }}</span></span><br>
+    <span class="manageEl">Contact: <span editable-text="clientData.contact_name" onbeforesave="updateClient({contact_name: $data})" blur="submit">{{ clientData.contact_name || "empty" }}</span></span><br>
+    <span class="manageEl">Phone: <span buttons="no" editable-text="clientData.bus_phone" onbeforesave="updateClient({bus_phone: $data})" blur="submit">{{ clientData.bus_phone || "empty" }}</span></span><br>
+    <span class="manageEl">Pick-up Time: <span buttons="no" editable-text="clientData.pickup_time" onbeforesave="updateClient({pickup_time: $data})" blur="submit">{{ clientData.pickup_time || "empty" }}</span></span><br>
+    <span class="manageEl">Street: <span buttons="no" editable-text="clientData.street" onbeforesave="updateClient({street: $data})" blur="submit">{{ clientData.street || "empty" }}</span></span><br>
+    <span class="manageEl">City: <span buttons="no" editable-text="clientData.city" onbeforesave="updateClient({city: $data})" blur="submit">{{ clientData.city || "empty" }}</span></span><br>
+    <span class="manageEl">State:<span buttons="no" editable-text="clientData.state" onbeforesave="updateClient({state: $data})" blur="submit">{{ clientData.state || "empty" }}</span></span><br>
+    <span class="manageEl">ZIP: <span buttons="no" editable-text="clientData.zip" onbeforesave="updateClient({zip: $data})" blur="submit">{{ clientData.zip || "empty" }}</span></span><br>
     <div>
       <button type="button" class="submit" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">Edit</button>
       <span ng-show="editableForm.$visible">
-        <button type="submit" class="submit" ng-disabled="editableForm.$waiting">
+        <button type="submit" class="submit" ng-click="reload()" ng-disabled="editableForm.$waiting">
           Save
         </button>
         <button type="button" class="submit" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
