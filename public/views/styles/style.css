@@ -2,21 +2,20 @@ html, body {
   height: 100%;
   margin: 0;
   top: 0;
-  color: #5d86a4;
+  color: $primary-color;
   font-weight: lighter;
-  letter-spacing: 1px; }
-
+  letter-spacing: 1px;
+}
 h1, h2, h3, h4, p {
-  font-weight: lighter; }
-
+  font-weight: lighter;
+}
 .header {
   width: 100%;
   z-index: 5;
   border-bottom: 1px solid #bfbfbf;
   background-color: #fff;
-  background: -webkit-linear-gradient(#f2efef, #fff);
-  /* For Safari 5.1 to 6.0 */ }
-
+  background: -webkit-linear-gradient(#f2efef, #fff); /* For Safari 5.1 to 6.0 */
+}
 .navButton {
   color: #5d86a4;
   display: table-cell;
@@ -25,35 +24,30 @@ h1, h2, h3, h4, p {
   padding: 0 20px;
   cursor: pointer;
   border-right: 1px solid #bfbfbf;
-  background: -webkit-linear-gradient(#f2efef, #fff);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#f2efef, #fff);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#f2efef, #fff);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#f2efef, #fff);
-  /* Standard syntax */ }
-
+  background: -webkit-linear-gradient(#f2efef, #fff); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#f2efef, #fff); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#f2efef, #fff); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#f2efef, #fff); /* Standard syntax */
+}
 .navButton:hover {
-  background: linear-gradient(#fff, #f2efef);
-  /* Standard syntax */ }
-
+  background: linear-gradient(#fff, #f2efef); /* Standard syntax */
+}
 .dropdown {
-  display: table-cell; }
-
-.dropdown-menu > li > a {
+  display: table-cell;
+}
+.dropdown-menu>li>a {
   padding: 7px 20px;
   font-weight: lighter;
   background-color: #fff;
-  color: #5d86a4; }
-
-.dropdown-menu > li > a:hover {
-  background-color: #fff; }
-
+  color: #5d86a4;
+}
+.dropdown-menu>li>a:hover {
+  background-color: #fff;
+}
 .logo {
   margin-right: 55px;
-  font-size: x-large; }
-
+  font-size: x-large;
+}
 .infoPane {
   background-color: #fff;
   border-radius: 2px;
@@ -61,36 +55,36 @@ h1, h2, h3, h4, p {
   padding: 2px 3px;
   max-width: 300px;
   font-weight: lighter;
-  letter-spacing: 0px; }
-
+  letter-spacing: 0px;
+}
 .marker {
-  color: #333; }
-
+  color: #333;
+}
 .infoPane h3 {
-  border-bottom: 1px solid #bfbfbf; }
-
+  border-bottom: 1px solid #bfbfbf;
+}
 .infoPane p {
-  margin: 5px 0px; }
-
+  margin: 5px 0px;
+}
 a:link, a:visited {
-  text-decoration: none; }
-
+  text-decoration: none;
+}
 a:hover {
   background-color: #fefaf0;
-  text-decoration: none; }
-
+  text-decoration: none;
+}
 #mapChart {
   height: 91%;
-  z-index: 1; }
-
+  z-index: 1;
+}
 .createContainer, .postContainer, .aboutContainer, .manageAccount {
   width: 400px;
   max-width: 95%;
-  margin: 45px auto; }
-
+  margin: 45px auto;
+}
 .manage {
-  margin: 5px; }
-
+  margin: 5px;
+}
 input, select, textarea {
   width: 250px;
   padding: 10px 10px 2px 7px;
@@ -100,11 +94,11 @@ input, select, textarea {
   margin: 6px 0 0 0;
   border-bottom: 1px solid #bfbfbf;
   font-size: 100%;
-  letter-spacing: 1px; }
-
+  letter-spacing: 1px;
+}
 input:focus, select:focus, textarea:focus {
-  outline: none; }
-
+  outline: none;
+}
 .submit {
   background: transparent;
   border: 1px solid #bfbfbf;
@@ -112,11 +106,10 @@ input:focus, select:focus, textarea:focus {
   padding: 8px 25px;
   color: #5d86a4;
   margin: 10px 5px 10px 0px;
-  letter-spacing: 1px; }
-
+  letter-spacing: 1px;
+}
 .submit:hover, submit:focus {
   outline: none;
   background-color: #5d86a4;
-  color: #fff; }
-
-/*# sourceMappingURL=canvas.css.map */
+  color: #fff;
+}
