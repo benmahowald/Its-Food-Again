@@ -23,5 +23,9 @@
   },
   "engines": {
     "node": "v6.5.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-npm-install": "^0.3.1"
   }
 }
