@@ -1,6 +1,8 @@
 $primary-color: #5d86a4;
 $border-color: #bfbfbf;
 $gradient-color: #f2efef;
+@import '_styleForm';
+@import '_navEl';
 
 html, body {
   height: 100%;
@@ -12,45 +14,6 @@ html, body {
 }
 h1, h2, h3, h4, p {
   font-weight: lighter;
-}
-.header {
-  width: 100%;
-  z-index: 5;
-  border-bottom: 1px solid $border-color;
-  background-color: #fff;
-  background: -webkit-linear-gradient($gradient-color, #fff); /* For Safari 5.1 to 6.0 */
-}
-.navButton {
-  color: $primary-color;
-  display: table-cell;
-  vertical-align: middle;
-  height: 50px;
-  padding: 0 20px;
-  cursor: pointer;
-  border-right: 1px solid $border-color;
-  background: -webkit-linear-gradient($gradient-color, #fff); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient($gradient-color, #fff); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient($gradient-color, #fff); /* For Firefox 3.6 to 15 */
-  background: linear-gradient($gradient-color, #fff); /* Standard syntax */
-}
-.navButton:hover {
-  background: linear-gradient(#fff, $gradient-color); /* Standard syntax */
-}
-.dropdown {
-  display: table-cell;
-}
-.dropdown-menu>li>a {
-  padding: 7px 20px;
-  font-weight: lighter;
-  background-color: #fff;
-  color: $primary-color;
-}
-.dropdown-menu>li>a:hover {
-  background-color: #fff;
-}
-.logo {
-  margin-right: 55px;
-  font-size: x-large;
 }
 .infoPane {
   background-color: #fff;
@@ -88,32 +51,4 @@ a:hover {
 }
 .manage {
   margin: 5px;
-}
-input, select, textarea {
-  width: 250px;
-  padding: 10px 10px 2px 7px;
-  max-width: 95%;
-  color: #444;
-  border: none;
-  margin: 6px 0 0 0;
-  border-bottom: 1px solid $border-color;
-  font-size: 100%;
-  letter-spacing: 1px;
-}
-input:focus, select:focus, textarea:focus {
-  outline: none;
-}
-.submit {
-  background: transparent;
-  border: 1px solid $border-color;
-  cursor: pointer;
-  padding: 8px 25px;
-  color: $primary-color;
-  margin: 10px 5px 10px 0px;
-  letter-spacing: 1px;
-}
-.submit:hover, submit:focus {
-  outline: none;
-  background-color: $primary-color;
-  color: #fff;
 }

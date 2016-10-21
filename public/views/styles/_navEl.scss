@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  z-index: 5;
+  border-bottom: 1px solid $border-color;
+  background-color: #fff;
+  background: -webkit-linear-gradient($gradient-color, #fff); /* For Safari 5.1 to 6.0 */
+}
+.navButton {
+  color: $primary-color;
+  display: table-cell;
+  vertical-align: middle;
+  height: 50px;
+  padding: 0 20px;
+  cursor: pointer;
+  border-right: 1px solid $border-color;
+  background: -webkit-linear-gradient($gradient-color, #fff); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($gradient-color, #fff); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($gradient-color, #fff); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($gradient-color, #fff); /* Standard syntax */
+}
+.navButton:hover {
+  background: linear-gradient(#fff, $gradient-color); /* Standard syntax */
+}
+.dropdown {
+  display: table-cell;
+}
+.dropdown-menu>li>a {
+  padding: 7px 20px;
+  font-weight: lighter;
+  background-color: #fff;
+  color: $primary-color;
+}
+.dropdown-menu>li>a:hover {
+  background-color: #fff;
+}
+.logo {
+  margin-right: 55px;
+  font-size: x-large;
+}
