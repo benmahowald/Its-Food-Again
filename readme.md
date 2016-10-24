@@ -27,4 +27,3 @@ Technologies
 * Mongoose
 * Auth0 Authentication
 * Google Maps API(https://developers.google.com/maps)
-* Heroku
