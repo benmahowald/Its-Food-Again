@@ -1,4 +1,4 @@
-PRIME SOLO PROJECT
+PRIME SOLO PROJECT - It's Food Again
 =====================================
 It’s Food Again is a full-stack web application that fights food insecurity and food waste. It  connects people with restaurants, grocery stores and other surplus food companies. At the end of a business day when there is food remaining that would be discarded or otherwise thrown in the trash it could be collected by users.
 
