@@ -16,14 +16,14 @@ The US throws away $165 billion in food per year. That’s 20lbs per person ever
 
 Technologies
 -------------------------------------
-* Node
+* Mongo
 * Express
 * Angular
+* Node
 * Angular Routing
 * Xeditable
 * Bootstrap
 * SASS
-* Mongo
 * Mongoose
 * Auth0 Authentication
 * Google Maps API(https://developers.google.com/maps)
