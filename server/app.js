@@ -11,17 +11,16 @@ var mongoose = require('mongoose');
 // link server to DB
 // var mongoURI = 'mongodb://<dbusername>:<password>@ds015334.mlab.com:15334/heroku_cpv005sw';
 // var mongoURI = 'mongodb://localhost:27017/foodAgain';
-var databaseURI = ‘’;
 // process.env.MONGODB_URI will only be defined if you
 // are running on Heroku
 if(process.env.MONGODB_URI != undefined) {
     // use the string value of the environment variable
-    databaseURI = process.env.MONGODB_URI;
+    var mongoURI = process.env.MONGODB_URI;
 } else {
     // use the local database server
-    databaseURI = 'mongodb://localhost:27017/foodAgain';
+    var mongoURI = 'mongodb://localhost:27017/foodAgain';
 }
-var MongoDB = mongoose.connect(databaseURI);
+var MongoDB = mongoose.connect(mongoURI).connection;
 
 // var MongoDB = mongoose.connect(mongoURI).connection;
 
