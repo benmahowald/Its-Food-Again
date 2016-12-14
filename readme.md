@@ -4,6 +4,8 @@ PRIME SOLO PROJECT - It's Food Again - (2 Week Project)
 =====================================
 It’s Food Again is a full-stack web application that fights food insecurity and food waste. It  connects people with restaurants, grocery stores and other surplus food companies. At the end of a business day when there is food remaining that would be discarded or otherwise thrown in the trash it could be collected by users.
 
+Click <a href="https://blooming-bayou-22785.herokuapp.com">here</a> to see the site.
+
 FAQs
 ------------------------------------
 
