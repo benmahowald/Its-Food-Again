@@ -7,7 +7,6 @@ app.use(bodyParser.json());
 var path = require('path');
 var port = process.env.PORT || 2727;
 var mongoose = require('mongoose');
-console.log(process.env.MONGODB_URI);
 // link server to DB
 // var mongoURI = 'mongodb://<dbusername>:<password>@ds015334.mlab.com:15334/heroku_cpv005sw';
 
