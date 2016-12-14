@@ -1,4 +1,6 @@
-PRIME SOLO PROJECT - It's Food Again
+PRIME SOLO PROJECT - It's Food Again - (2 Week Project)
+=====================================
+https://cloud.githubusercontent.com/assets/19895930/21205949/9e7c0764-c224-11e6-98f1-a8c34ef5963c.png
 =====================================
 It’s Food Again is a full-stack web application that fights food insecurity and food waste. It  connects people with restaurants, grocery stores and other surplus food companies. At the end of a business day when there is food remaining that would be discarded or otherwise thrown in the trash it could be collected by users.
 
@@ -27,3 +29,5 @@ Technologies
 * Mongoose
 * Auth0 Authentication
 * Google Maps API(https://developers.google.com/maps)
+* Hosted on Heroku
+* DB supported by mLabs
